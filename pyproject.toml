@@ -1,14 +1,24 @@
-[tool.poetry]
+[project]
 name = "multiagent-chat"
 version = "0.1.0"
 description = ""
-authors = ["Richard Blythman <richardblythman@gmail.com>"]
+authors = [
+    {name = "Richard Blythman", email = "richardblythman@gmail.com"}
+]
 readme = "README.md"
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "naptha-sdk",
+    "pydantic>=2.10.6",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-naptha-sdk = {git = "https://github.com/NapthaAI/naptha-sdk.git"}
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["multiagent_chat"]
+
+[tool.uv.sources]
+naptha-sdk = { git = "https://github.com/NapthaAI/naptha-sdk.git" }
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
